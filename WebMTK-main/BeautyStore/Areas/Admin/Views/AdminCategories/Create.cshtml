@@ -1,0 +1,36 @@
+﻿@model BeautyStore.Models.Category
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Phân loại sản phẩm</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","AdminHome")">Home</a></li>
+                <li class="breadcrumb-item active">Phân loại sản phẩm</li>
+            </ol>
+        </nav>
+    </div>
+    @using (Html.BeginForm("Create", "AdminCategories", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <label for="topic">Tên danh mục : </label>
+        @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } }) <br />
+        <div class="box-img-admin">
+            <label for="imgInp">Hình ảnh :</label><br />
+            <img id="blah" src="#" alt="" width="200px" />
+
+            <input accept="image/*" type='file' id="imgInp" name="ImgCate" /><br>
+        </div><br>
+        <div style="margin: 10px 0px;">
+            <button type="submit" class="btn btn-success">Thêm mới</button>
+        </div>
+    }
+
+
+    @Html.ActionLink("Quay lại", "Index")
+    </main>

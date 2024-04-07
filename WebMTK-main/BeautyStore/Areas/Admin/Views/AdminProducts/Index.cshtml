@@ -1,0 +1,57 @@
+﻿@model IEnumerable<BeautyStore.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Quản lý sản phẩm</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","AdminHome")">Home</a></li>
+                <li class="breadcrumb-item active">Quản lý sản phẩm</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+
+
+    <p>
+        @Html.ActionLink("Thêm sản phẩm", "Create")
+    </p>
+    <div class="table-responsive">
+        <table class="table" width="100%">
+            <thead>
+                <tr>
+                    <th>Hình ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Thương hiệu</th>
+                    <th>Phân loại sản phẩm</th>
+                    <th>Công cụ</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><img src="~/image/@item.Image1" style="width:100px"></td>
+                        <td style="width:250px">@item.ProductName</td>
+                        <td style="width:100px">@item.amount</td>
+                        <td>@*<img src="~/image/@item.Category.CategoryImage" width="100px" height="50px">*@ @item.Brand.BrandName</td>
+                        <td style="width:200px">@item.Category.CategoryName</td>
+                        <td>
+                            <h6 style="color:blue"><span class="las la-edit"></span><a href="@Url.Action("Edit/", new { id=item.ProductID })">Chỉnh sửa</a></h6>
+                            <h6 style="color:blue"><span class="las la-trash"></span><a href="@Url.Action("Delete/", new { id=item.ProductID })">Xóa bỏ </a></h6>
+                           
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+    </main>

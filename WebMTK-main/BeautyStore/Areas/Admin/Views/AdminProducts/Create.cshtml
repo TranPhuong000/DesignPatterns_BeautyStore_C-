@@ -1,0 +1,143 @@
+﻿@model BeautyStore.Models.Product
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+<main <main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Quản lý tài khoản</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Quản lý tài khoản</li>
+            </ol>
+        </nav>
+    </div>
+
+    @using (Html.BeginForm("Create", "AdminProducts", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="checkbox-img">
+            <div class="box-img-admin">
+                <img id="blah" src="#" alt="" width="150px" height="150px" /><br>
+                <input accept="image/*" type='file' id="imgInp" name="ImgProd1" />
+                <label for="imgInp"><i class="bi bi-upload">Hình 1</i></label>
+            </div>
+            <div class="box-img-admin">
+                <img id="bleh" src="#" alt="" width="150px" height="150px" /><br>
+                <input accept="image/*" type='file' id="imgImp" name="ImgProd2" />
+                <label for="imgImp"><i class="bi bi-upload">Hình 2</i></label>
+
+            </div>
+        </div>
+
+
+        <div class="detail-admin ">
+            <div class="projects">
+                <div class="card-body">
+                    <label>Tên sản phẩm:</label>
+                    <input type="text" name="ProductName" class="form-control" placeholder="Tên sản phẩm" /><br>
+
+                    <label>Số lượng:</label>
+                    <input type="number" name="amount" min="1" max="10000" value="1" class="form-control" style="width:100px"><br>
+
+                    <label>Giá:</label>
+                    <input type="text" id="fname" name="Price" class="form-control" placeholder="Giá sản phẩm" /><br>
+
+                    <input type="checkbox" id="myCheck" onclick="myFunction()">
+                    <span>Giảm giá</span>
+
+                    <input type="text" id="text" name="IntialPrice" style="display:none;" class="form-control" size="30" placeholder="Giá gốc" />
+                    <script>
+                        function myFunction() {
+                            var checkBox = document.getElementById("myCheck");
+                            var text = document.getElementById("text");
+                            if (checkBox.checked == true) {
+                                text.style.display = "block";
+                            } else {
+                                text.style.display = "none";
+                            }
+                        }
+                    </script>
+                    <br />
+                    <div class="input-box" style="margin: 10px 0px; width: 220px; float:left">
+                        <label for="cars">Loại sản phẩm:</label>
+                        @Html.DropDownList("CategoryID", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+
+                    <div class="input-box" style="margin: 10px 0px; width: 220px; float:right">
+                        <label for="cars">Thương hiệu:</label>
+                        @Html.DropDownList("BrandID", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+
+                    <div>
+                        <h5>Thành phần chính</h5>
+                        <textarea class="input-introd-prod" name="MainIngredients" placeholder="Thành phần chính" rows="9"></textarea>
+                    </div><br />
+
+                    <div>
+                        <h5>Thành phần đầy đủ</h5>
+                        <textarea class="input-introd-prod" name="FullIngredients" placeholder="Thành phần đầy đủ" rows="9"></textarea>
+                    </div>
+                    <div class="checkbox-detail-admin">
+                        <table class="table table-striped">
+                            <tbody class="attributes-list-items">
+                                <tr>
+                                    <td>Công nghệ</td>
+                                    <td> @Html.EditorFor(model => model.Technology, new { htmlAttributes = new { @class = "form-control" } }) </td>
+                                </tr>
+                                <tr>
+                                    <td>Xuất xứ thương hiệu</td>
+                                    <td> @Html.EditorFor(model => model.OriginOfBrand, new { htmlAttributes = new { @class = "form-control" } }) </td>
+                                </tr>
+                                <tr>
+                                    <td>Nơi sản xuất</td>
+                                    <td> @Html.EditorFor(model => model.OriginOfProduction, new { htmlAttributes = new { @class = "form-control" } })</td>
+                                <tr>
+                                    <td>Loại da</td>
+                                    <td> @Html.EditorFor(model => model.SkinType, new { htmlAttributes = new { @class = "form-control" } }) </td>
+                                </tr>
+                                <tr>
+                                    <td>Đặc tính</td>
+                                    <td> @Html.EditorFor(model => model.Attribute, new { htmlAttributes = new { @class = "form-control" } }) </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Giới tính</td>
+                                    <td> @Html.EditorFor(model => model.Sex, new { htmlAttributes = new { @class = "form-control" } }) </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Vấn đề về da</td>
+                                    <td> @Html.EditorFor(model => model.SkinProblem, new { htmlAttributes = new { @class = "form-control" } })</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="width: 470px">
+                        <h5>Giới thiệu sản phẩm</h5>
+                        <textarea class="input-introd-prod" name="Desciption" placeholder="Giới thiệu sản phẩm" rows="10"></textarea>
+                    </div>
+                    <button type="submit" class="btn  btn-success" style="width:100%">Thêm mới</button>
+
+                </div>
+            </div>
+        </div>
+
+
+       
+        <br />
+
+       
+
+    }
+
+    <div>
+        @Html.ActionLink("Quay lại", "Index")
+    </div>
+
+    </main>

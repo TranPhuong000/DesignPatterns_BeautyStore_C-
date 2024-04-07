@@ -1,0 +1,12 @@
+﻿body {
+    background-color: #1a1a1a; /* Màu nền đen */
+    color: #ffffff; /* Màu chữ trắng */
+}
+
+.header {
+    background-color: #222;
+}
+
+.brand {
+    color: #ffffff;
+}

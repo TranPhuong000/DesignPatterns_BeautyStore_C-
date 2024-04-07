@@ -1,0 +1,60 @@
+﻿@model BeautyStore.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+<main id="main" class="main">
+
+
+    <!-- Default box -->
+    <div class="pagetitle">
+        <h1>Quản lý tài khoản</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Quản lý tài khoản</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container">
+        <h2>Thông tin khách hàng</h2>
+
+        <div>
+
+            <hr />
+            <dl class="dl-horizontal">
+                <dd style="float:left; margin-right:50px">
+                    <img src="~/image/@Model.AvatarImage" style="width:200px; height:200px;border-radius:50%" />
+                </dd>
+
+                <dt>
+                    Tên khách hàng
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.UserName)
+                </dd>
+
+                <dt>
+                    Email
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.UserEmail)
+                </dd>
+
+                <dt>
+                    Số điện thoại
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PhoneNumber)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.UserID }) |
+            @Html.ActionLink("Quay lại", "Index")
+        </p>
+    </div>
+    </main>

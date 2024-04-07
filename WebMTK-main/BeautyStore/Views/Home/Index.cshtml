@@ -1,0 +1,270 @@
+﻿@using BeautyStore.Controllers;
+@{
+    var formatMoney = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+}
+
+<!-- slider -->
+<div class="hero_area">
+    <section class="slider_section">
+        <div class="slider_container">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <a href="#"><img class="d-block w-100" src="~/Content/assets/img/banner2.png" alt="First slide"></a>
+
+                                    <div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item ">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="detail-box">
+                                        <h1>
+                                           Chào mừng bạn đến với <br>
+                                            DIOR
+                                        </h1>
+                                        <p>
+                                            DIOR là bắt đầu hành trình chăm sóc da của bạn! Với sự kết hợp của những thành phần tự nhiên và công nghệ tiên tiến,
+                                            chúng tôi mang đến cho bạn trải nghiệm làm đẹp hoàn toàn mới, làm cho làn da của bạn rạng ngời mỗi ngày.
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-5 ">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item ">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="detail-box">
+                                        <h1>
+                                            DIOR
+                                        </h1>
+                                        <p>
+                                            DIOR - Nơi gặp gỡ, chia sẻ và phát triển cùng cộng đồng làm đẹp. Chúng tôi không chỉ cung cấp các sản phẩm hàng đầu mà còn tạo 
+                                            cơ hội để bạn kết nối với những người đam mê làm đẹp và chia sẻ những bí quyết làm đẹp cá nhân của mình.
+                                        </p>
+                                        <a href="@Url.Action("GetAllProduct","Category")">
+                                            Tìm hiểu thêm
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 ">
+                                    <div class="img-box">
+                                        <img src="~/Content2/images/slider-img.png" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel_btn-box">
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <img src="images/line.png" alt="" />
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- end-slider -->
+<!-- sale-product -->
+<div class="content">
+    <div class="container">
+        <!-- brand -->
+        <div class="brand">
+            <h5>THƯƠNG HIỆU HỢP TÁC</h5>
+            <ul>
+                @foreach (var item in ViewBag.BrandsList) 
+                {
+                    <li><a href="@Url.Action("Index/" + item.BrandID,"Brand/" )"><img src="~/Image/@item.BrandImage" alt="@item.BrandImage"></li>
+                }
+            </ul>
+        </div><br />
+        <!-- end-brand -->
+        <!-- sale-product -->
+        <div class="product-list">
+            <div class="product-head">
+                <a href="@Url.Action("GetAllProduct","Category")">
+                    <h3 style="color:#fff">SẢN PHẨM MỚI</h3>
+                </a>
+                <a href="@Url.Action("GetAllProduct","Category")"><span>Xem thêm</span></a>
+            </div>
+            <div class="owl-carousel">
+                @foreach (var item in ViewBag.ProductsList)
+                {
+                    <!-- product1 -->
+                    <div class="element">
+                        <a href="@Url.Action("Index/"+ item.ProductID,"Details" )">
+                            <div class="card" style="margin:auto">
+                                <img class="card-img-top" src="~/Image/@item.Image1" style="height:255px">
+                                <div class="card-body">
+                                    <div class="product-name">
+                                        <p class="card-text">@item.ProductName</p>
+                                    </div><br />
+                                    <h6 class="initial-price">@String.Format(formatMoney, "{0:c0}", item.IntialPrice)</h6>
+                                    <h5>@String.Format(formatMoney, "{0:c0}", item.Price)</h5>
+                                    @*@if (item.amount < 1)
+        {
+            <div class="sold-out-label">
+                <img src="~/Image/download.png" alt="">
+                <p>Hết hàng</p>
+            </div>
+        }*@
+
+                                    @{//Mẫu Decorator
+                                        var soldOutDecorator = new SoldOutDecorator(Html);
+                                    }
+
+                                    @Html.Raw(soldOutDecorator.Decorate(item))
+                                    <span class="rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </span>
+                                    <button class="love-product"><i class="bi bi-heart-fill"></i></button>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- end-product1 -->
+                 }
+
+            </div>
+        </div>
+        <!-- end-sale-product -->
+        <!-- category product -->
+        <div class="product-list category-product">
+            <div class="product-head">
+                <a href="#">
+                    <h3>@ViewBag.FirstCate.CategoryName</h3>
+                </a>
+                <a href="@Url.Action("Index/" +1 ,"Category")"><span>Xem thêm</span></a>
+            </div>
+            <div class="owl-carousel">
+                @foreach (var item in ViewBag.ProductsList_1)
+                {
+                    <!-- product1 -->
+                    <div class="element">
+                        <a href="@Url.Action("Index/"+ item.ProductID,"Details" )">
+                            <div class="card">
+                                <img class="card-img-top" src="~/Image/@item.Image1" alt="Card image cap" style="height:255px">
+                                <div class="card-body">
+                                    <div class="product-name">
+                                        <p class="card-text">@item.ProductName</p>
+                                    </div><br />
+                                    <h6 class="initial-price">@String.Format(formatMoney, "{0:c0}", item.IntialPrice)</h6>
+                                    <h5>@String.Format(formatMoney, "{0:c0}", item.Price)</h5>
+                                    @*@if (item.amount < 1)
+        {
+            <div class="sold-out-label">
+                <img src="~/Image/download.png" alt="">
+                <p>Hết hàng</p>
+            </div>
+        }*@
+
+                                    @{
+                                        var soldOutDecorator = new SoldOutDecorator(Html);
+                                    }
+
+                                    @Html.Raw(soldOutDecorator.Decorate(item))
+                                    <span class="rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </span>
+                                    <button class="love-product"><i class="ri-heart-3-fill"></i></button>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+                <!-- end-product1 -->
+
+            </div>
+        </div>
+        <!-- end-first-category-product -->
+        <!-- category product -->
+        <div class="product-list category-product">
+            <div class="product-head">
+                <a href="#">
+                    <h3>@ViewBag.SecondCate.CategoryName</h3>
+                </a>
+                <a href="@Url.Action("Index/" +2 ,"Category")"><span>Xem thêm</span></a>
+            </div>
+            <div class="owl-carousel">
+                @foreach (var item in ViewBag.ProductsList_2)
+                {
+                    <!-- product1 -->
+                    <div class="element">
+                        <a href="@Url.Action("Index/"+ item.ProductID,"Details" )">
+                            <div class="card">
+                                <img class="card-img-top" src="~/Image/@item.Image1" alt="Card image cap" style="height:255px">
+                                <div class="card-body">
+                                    <div class="product-name">
+                                        <p class="card-text">@item.ProductName</p>
+                                    </div><br />
+                                    <h6 class="initial-price">@String.Format(formatMoney, "{0:c0}", item.IntialPrice)</h6>
+                                    <h5>@String.Format(formatMoney, "{0:c0}", item.Price)</h5>
+                                    @*@if (item.amount < 1)
+        {
+            <div class="sold-out-label">
+                <img src="~/Image/download.png" alt="">
+                <p>Hết hàng</p>
+            </div>
+        }*@
+                                    @{
+                                        var soldOutDecorator = new SoldOutDecorator(Html);
+                                    }
+
+                                    @Html.Raw(soldOutDecorator.Decorate(item))
+                                    <span class="rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </span>
+                                    <button class="love-product"><i class="ri-heart-3-fill"></i></button>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+                <!-- end-product1 -->
+
+            </div>
+        </div>
+        <!-- end-first-category-product -->
+
+    </div>
+</div>
+

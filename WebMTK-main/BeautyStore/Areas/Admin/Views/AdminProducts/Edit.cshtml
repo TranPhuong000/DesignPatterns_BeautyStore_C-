@@ -1,0 +1,175 @@
+﻿@model BeautyStore.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+
+<main id="main" class="main">
+
+
+    <!-- Default box -->
+    <div class="pagetitle">
+        <h1>Quản lý tài khoản</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Quản lý tài khoản</li>
+            </ol>
+        </nav>
+    </div>
+
+    <h4>@Model.ProductName</h4>
+
+    @using (Html.BeginForm("Edit", "AdminProducts", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="checkbox-img" style="text-align: center">
+            <div class="box-img-admin">
+                <img id="blah" src="~/image/@Model.Image1" alt="" width="150px" height="150px" /><br>
+                <input accept="image/*" type='file' id="imgInp" name="ImgProd1" />
+                <label for="imgInp"><i class="bi bi-upload">Hình 1</i></label>
+                @Html.HiddenFor(model => model.Image1)
+            </div>
+            <div class="box-img-admin">
+                <img id="bleh" src="~/image/@Model.Image2" alt="" width="150px" height="150px" /><br>
+                <input accept="image/*" type='file' id="imgImp" name="ImgProd2" />
+                <label for="imgImp"><i class="bi bi-upload">Hình 2</i></label>
+                @Html.HiddenFor(model => model.Image2)
+            </div>
+        </div>
+
+
+        <div class="detail-admin ">
+            <div class="projects">
+                <div class="card-body">
+                    @Html.HiddenFor(model => model.ProductID)
+
+                    <span>Tên sản phẩm</span>
+                    <input type="text" name="ProductName" class="form-control" value="@Model.ProductName" /><br>
+
+                    <span>Số lượng:</span>
+                    <input type="number" name="amount" min="1" max="10000" value="@Model.amount" class="form-control" style="width:220px"><br>
+
+                    <span>Giá</span>
+                    <input type="text" id="fname" name="Price" class="form-control" placeholder="Giá sản phẩm" value="@Model.Price" /><br>
+                    <input type="checkbox" id="myCheck" onclick="myFunction()">
+                    <span>Giảm giá</span>
+
+                    <input type="text" id="text" name="IntialPrice" style="display:none;" class="form-control" size="30" placeholder="Giá gốc" value="@Model.IntialPrice" />
+                    <script>
+                        function myFunction() {
+                            var checkBox = document.getElementById("myCheck");
+                            var text = document.getElementById("text");
+                            if (checkBox.checked == true) {
+                                text.style.display = "block";
+                            } else {
+                                text.style.display = "none";
+                            }
+                        }
+                    </script>
+                    <br />
+                    <div class="input-box" style="margin:10px 0px; width: 220px; float:left">
+                        <label for="cars">Phân loại sản phẩm:</label>
+                        @Html.DropDownList("CategoryID", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                    <div class="input-box" style="margin: 10px 0px; width: 220px; float:right">
+                        <label for="cars">Thương hiệu:</label>
+                        @Html.DropDownList("BrandID", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div style="margin-left: 15px">
+                    <h5>Thành phần chính</h5>
+                    <textarea class="input-introd-prod" name="MainIngredients" placeholder="Thành phần chính" rows="8">@Model.MainIngredients</textarea>
+                </div><br />
+
+                <div style="margin-left: 15px">
+                    <h5>Thành phần đầy đủ</h5>
+                    <textarea class="input-introd-prod" name="FullIngredients" placeholder="Thành phần đầy đủ" rows="8">@Model.FullIngredients</textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success" style="width: 60%; float: left; margin-left: 15px">Lưu</button>
+                <a href="@Url.Action("Delete")" class="btn btn-danger" style="width: 35%; float: right">Xóa</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="checkbox-detail-admin">
+            <table class="table table-striped">
+                <tbody class="attributes-list-items">
+                    <tr>
+                        <td>Công nghệ</td>
+                        <td> @Html.EditorFor(model => model.Technology, new { htmlAttributes = new { @class = "form-control" } }) </td>
+                    </tr>
+                    <tr>
+                        <td>Xuất xứ thương hiệu</td>
+                        <td> @Html.EditorFor(model => model.OriginOfBrand, new { htmlAttributes = new { @class = "form-control" } }) </td>
+                    </tr>
+                    <tr>
+                        <td>Nơi sản xuất</td>
+                        <td> @Html.EditorFor(model => model.OriginOfProduction, new { htmlAttributes = new { @class = "form-control" } })</td>
+                    <tr>
+                        <td>Loại da</td>
+                        <td> @Html.EditorFor(model => model.SkinType, new { htmlAttributes = new { @class = "form-control" } }) </td>
+                    </tr>
+                    <tr>
+                        <td>Đặc tính</td>
+                        <td> @Html.EditorFor(model => model.Attribute, new { htmlAttributes = new { @class = "form-control" } }) </td>
+                    </tr>
+
+                    <tr>
+                        <td>Giới tính</td>
+                        <td> @Html.EditorFor(model => model.Sex, new { htmlAttributes = new { @class = "form-control" } }) </td>
+                    </tr>
+
+                    <tr>
+                        <td>Vấn đề về da</td>
+                        <td> @Html.EditorFor(model => model.SkinProblem, new { htmlAttributes = new { @class = "form-control" } })</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div><br />
+
+        <div style="width: 470px">
+            <h5>Giới thiệu sản phẩm</h5>
+            <textarea class="input-introd-prod" name="Desciption" placeholder="Giới thiệu sản phẩm" rows="10">@Model.Desciption</textarea>
+        </div>
+
+    }
+
+
+    <script>
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files
+            if (file) {
+                blah.src = URL.createObjectURL(file)
+            }
+        }
+        imgImp.onchange = evt => {
+            const [file] = imgImp.files
+            if (file) {
+                bleh.src = URL.createObjectURL(file)
+            }
+        }
+        imgIop.onchange = evt => {
+            const [file] = imgIop.files
+            if (file) {
+                bldh.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
+
+
+    <div>
+        @Html.ActionLink("Quay lại", "Index")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</main>

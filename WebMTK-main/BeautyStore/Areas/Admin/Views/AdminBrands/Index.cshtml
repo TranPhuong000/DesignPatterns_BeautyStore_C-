@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BeautyStore.Models.Brand>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Quản lý thương hiệu</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","AdminHome")">Home</a></li>
+                <li class="breadcrumb-item active">Quản lý thương hiệu</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+
+    <p>
+        @Html.ActionLink("Thêm thương hiệu mới", "Create")
+    </p>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped" width="100%">
+                <thead>
+                    <tr>
+                        <th>Thương hiệu</th>
+                        <th>Hình ảnh đại diện</th>
+                        <th>Công cụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.BrandName</td>
+                            <td><img src="~/image/@item.BrandImage" style="height:80px; width: 160px"></td>
+                            <td>
+                                <h6 style="color:blue"><span class="las la-edit"></span><a href="@Url.Action("Edit/"+item.BrandID)">Chỉnh sửa</a></h6>
+                                <h6 style="color:blue"><span class="las la-trash"></span><a href="@Url.Action("Delete/"+item.BrandID)">Xóa bỏ </a></h6>
+                                <h6 style="color:blue"><span class="las la-trash"></span><a href="@Url.Action("Copy/"+item.BrandID)">Clone</a></h6>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>

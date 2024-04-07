@@ -1,0 +1,129 @@
+﻿@model IEnumerable<BeautyStore.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+    var formatMoney = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+}
+
+<main id="main" class="main">
+
+
+    <!-- Default box -->
+    <div class="pagetitle">
+        <h1>Quản lý đơn hàng</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Quản lý đơn hàng</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8 cart">
+        </div>
+    </div>
+    <br>
+    <div class="card-bill">
+        <div class="product border-bottom table-responsive">
+            <table class="table table-borderless" style="text-align:center">
+                <tr>
+                    <th>STT</th>
+                    <th>Sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Thành tiền</th>
+                </tr>
+                <!--product-1-->
+                @{ int index = 1;}
+                @foreach (var item in Model)
+                {
+                    <tr class="cart-item">
+                        <td>@(index++)</td>
+                        <td>
+                            <div class="product-infor-cart" style="width: 400px">
+                                <img src="~/image/@item.Product.Image1" alt="" style="width: 100px">
+                                <div class="name-product-cart">@item.Product.ProductName</div>
+                            </div>
+                        </td>
+                        <td style="text-align:center">@item.Quantity</td>
+                        <td> <div class="into-money-cart">@String.Format(formatMoney, "{0:c0}", item.UnitPrice)</div> </td>
+                        <td> <div class="into-money-cart">@String.Format(formatMoney, "{0:c0}", item.FinalPrice)</div> </td>
+                    </tr>
+                }
+                <!--end-product-1-->
+            </table>
+        </div>
+
+        <form action="Order" method="post">
+            <div class="row d-flex order-infor">
+                <div class="col-md-6">
+                    <table class="table table-borderless">
+                        <tbody class="totals-bill">
+                            <tr>
+                                <td> <div class="text-left"> <span class="text-muted">Tên khách hàng</span> </div> </td>
+                                <td> <div class="text-right"> <span>@ViewBag.CusInfor.Customer.UserName</span> </div> </td>
+                            </tr>
+                            <tr>
+                                <td> <div class="text-left"> <span class="text-muted">Số điện thoại</span> </div> </td>
+                                <td> <div class="text-right"><span> @ViewBag.CusInfor.Customer.PhoneNumber</span> </div> </td>
+                            </tr>
+                            <tr>
+                                <td> <div class="text-left"> <span class="text-muted">Ngày đặt </span> </div> </td>
+                                <td> <div class="text-right"><span> @String.Format("{0:dd/MM/yyyy}", ViewBag.Date)</span> </div> </td>
+                            </tr>
+                            <tr>
+                                <td> <div class="text-left"> <span class="text-muted">Địa chỉ giao hàng </span> </div> </td>
+                                <td> <div class="text-right"><span> @ViewBag.Address</span> </div> </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+
+                </div>
+
+                <div class="col-md-6">
+                    <table class="table table-borderless">
+                        <tbody class="totals-bill">
+                            <tr>
+                                <td> <div class="text-left"> <span class="text-muted">Tổng phụ</span> </div> </td>
+                                <td> <div class="text-right"> <span>@String.Format(formatMoney, "{0:c0}", ViewBag.FinalPrice)</span> </div> </td>
+                            </tr>
+                            <tr>
+                                <td> <div class="text-left"> <span class="text-muted">Phí vận chuyển</span> </div> </td>
+                                <td> <div class="text-right"> <span>0 đ</span> </div> </td>
+                            </tr>
+                            <tr>
+                                <td> <div class="text-left"> <span class="text-muted">Khuyến mãi</span> </div> </td>
+                                <td> <div class="text-right"> <span class="text-success">0 đ</span> </div> </td>
+                            </tr>
+                            <tr class="border-top border-bottom">
+                                <td> <div class="text-left"> <span class="font-weight-bold">Tổng tiền</span> </div> </td>
+                                <td> <div class="text-right"> <span class="font-weight-bold">@String.Format(formatMoney, "{0:c0}", ViewBag.FinalPrice)</span> </div> </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                    @if (ViewBag.Status == 0)
+                    {
+                        <a href='@Url.Action("Confirm/" + ViewBag.Id,"AdminOrders")' class="btn btn-success" style="float:right">Xác nhận đơn hàng</a>
+                      
+                        <a href= '@Url.Action("CancelOrder/" + ViewBag.Id,"AdminOrders")' class="btn btn-danger" style="float:right">Hủy đơn hàng</a>
+                    }
+
+                    @*@if (ViewBag.Status == 2)
+                    {
+                        <a href='@Url.Action("CancelOrder/" + ViewBag.Id,"AdminOrders")' class="btn btn-danger" style="float:right">Hủy đơn hàng</a>
+                    }*@
+
+                </div>
+
+            </div>
+        </form>
+
+
+    </div>
+</main>

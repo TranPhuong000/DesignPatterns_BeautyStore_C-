@@ -1,0 +1,32 @@
+﻿@model BeautyStore.Models.Category
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Phân loại sản phẩm</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","AdminHome")">Home</a></li>
+                <li class="breadcrumb-item active">Phân loại sản phẩm</li>
+            </ol>
+        </nav>
+    </div>
+    <h3>Bạn có chắc chắn muốn xóa @Html.DisplayFor(model => model.CategoryName) không ?</h3>
+    <div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Quay lại", "Index")
+            </div>
+        }
+    </div>
+</main>

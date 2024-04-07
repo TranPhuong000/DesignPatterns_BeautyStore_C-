@@ -1,0 +1,558 @@
+﻿
+@using BeautyStore.DesignPattern.Builder_Pattern
+@using BeautyStore.DesignPattern.Strategy
+@{
+    var menuBuilder = new MenuBuilder();
+    var menuHtml = menuBuilder.AddMenuItem("Sản phẩm", Url.Action("GetAllProduct", "Category"), "nav-link active");
+    menuHtml += menuBuilder.AddMenuItem("Tin tức", Url.Action("Index", "News"), "nav-link");
+    menuHtml += menuBuilder.AddMenuItem("Giới thiệu", Url.Action("Introduction", "Home"), "nav-link");
+    // Thêm các mục menu khác tùy ý
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>DIORADMIN</title>
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <link rel="shortcut icon" href="~/Content2/images/favicon.png" type="image/x-icon">
+    <link href="~/Content/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- slider stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="~/Content2/css/bootstrap.css" />
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content2/css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="~/Content2/css/responsive.css" rel="stylesheet" />
+    <!--css2-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--CSS only -->
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/icons/css/all.css">
+    <link href="~/icons/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/Content/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+    <title></title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Contents/clients/plugins/fontawesome-free/css/all.min.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="~/Contents/clients/plugins/daterangepicker/daterangepicker.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="~/Contents/clients/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="~/Contents/clients/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="~/Contents/clients/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="~/Contents/clients/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="~/Contents/clients/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <!-- Bootstrap4 Duallistbox -->
+    <link rel="stylesheet" href="~/Contents/clients/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+    <!-- BS Stepper -->
+    <link rel="stylesheet" href="~/Contents/clients/plugins/bs-stepper/css/bs-stepper.min.css">
+    <!-- dropzonejs -->
+    <link rel="stylesheet" href="~/Contents/clients/plugins/dropzone/min/dropzone.min.css">
+    <!-- Theme style -->
+    @*<link rel="stylesheet" href="~/Contents/clients/dist/css/adminlte.min.css">*@
+    <link href="~/Contents/PagedList.css" rel="stylesheet" />
+    <!--css3-->
+    <!-- Vendor CSS Files -->
+    <link href="~/Content/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    @*<link rel="stylesheet" href="~/Areas/Admin/Content/admin.css">*@
+
+
+
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+    <link href="~/Content3/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="~/Content3/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/Content3/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="~/Content3/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/Content3/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/Content3/styles/responsive.css">
+    <!--css4-->
+    <link rel="stylesheet" type="text/css" href="~/Content3/styles/bootstrap4/bootstrap.min.css">
+
+
+    <link rel="stylesheet" type="text/css" href="~/Content3/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="~/Content3/styles/categories_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/Content3/styles/categories_responsive.css">
+    <link href="~/Content/assets/css/style.css" rel="stylesheet">
+    @*thay đổi màu nền*@
+    <link id="theme" href="@LayoutHelper.GetThemeStyleSheet()" rel="stylesheet" />
+    <link href="~/Content/css/button_daynight.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div class="main_nav_container">
+        <div class="container">
+            <div class="row">
+                <div id="header" class="header fixed-top d-flex align-items-center">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <a href="@Url.Action("Index","Home")" class="logo d-flex align-items-center">
+                            <img src="~/Content/assets/img/logoDior.png" alt="">
+                            <span class="d-none d-lg-block">DIOR</span>
+                        </a>
+
+                    </div>
+                    <div class="navbar">
+                        <a class=" text-right search-form d-flex align-items-center search-bar" ">
+                            @using (Html.BeginForm("Search", "Category", FormMethod.Post, new { @class = "form-inline" }))
+                            {
+                                <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm" name="searchString" aria-label="Search">
+                                <button class=" my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
+                            }
+
+                        </a>
+                    </div>
+                    <nav class="navbar">
+
+                        <ul class="d-flex align-items-center">
+
+                            @*<li class="col-lg-3 search-input text-right">
+
+                                    @using (Html.BeginForm("Search", "Category", FormMethod.Post, new { @class = "form-inline" }))
+                                    {
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm" name="searchString" aria-label="Search">
+                                        <button class=" my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
+                                    }
+
+                                </li>*@
+                            <li></li>
+
+                            <li>
+                                <label class="switch-custom" id="theme-toggle-button" onclick="toggleTheme()">
+                                    <span class="sun-custom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="#ffd43b"><circle r="5" cy="12" cx="12"></circle><path d="m21 13h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm-17 0h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm13.66-5.66a1 1 0 0 1 -.66-.29 1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1 -.75.29zm-12.02 12.02a1 1 0 0 1 -.71-.29 1 1 0 0 1 0-1.41l.71-.66a1 1 0 0 1 1.41 1.41l-.71.71a1 1 0 0 1 -.7.24zm6.36-14.36a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm0 17a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm-5.66-14.66a1 1 0 0 1 -.7-.29l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.29zm12.02 12.02a1 1 0 0 1 -.7-.29l-.66-.71a1 1 0 0 1 1.36-1.36l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.24z"></path></g></svg></span>
+                                    <span class="moon-custom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="m223.5 32c-123.5 0-223.5 100.3-223.5 224s100 224 223.5 224c60.6 0 115.5-24.2 155.8-63.4 5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6-96.9 0-175.5-78.8-175.5-176 0-65.8 36-123.1 89.3-153.3 6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path></svg></span>
+                                    <input type="checkbox" class="input" onclick="toggleTheme()">
+                                    <span class="slider-custom"></span>
+                                </label>
+                            </li>
+
+                            @Html.Raw(menuHtml)
+                            @*<li><a class="nav-link active" aria-current="page" href="@Url.Action("GetAllProduct","Category")"><i class=""></i>Sản phẩm</a></li>
+
+                                <li><a class="nav-link" href="@Url.Action("Index","News")"><i class=""></i>Tin tức</a></li>
+                                <li> <a class="nav-link" href="@Url.Action("Introduction","Home")"><i class=""></i>Giới thiệu</a></li>*@
+
+
+                            <li>
+                                @{ var user = Session["Account"] as BeautyStore.Models.Customer;}
+                                @if (user != null)
+                                {
+                                    @Html.Action("CartPartial", "Cart")
+                                }
+                                else
+                                {
+                                    <div class="item cart-btn">
+                                        @*<a href="@Url.Action("Login","Users")" class="user-">
+                                                <i class="bi bi-cart3"></i>
+
+                                            </a>*@
+
+                                    </div>
+                                }
+
+                            </li>
+                            <li>
+                                @if (user != null)
+                                {
+                                    <div class="dropdown item user-loged">
+
+                                        <a class="nav-link nav-profile d-flex align-items-center pe-0" data-toggle="dropdown">
+                                            <img src="~/image/@user.AvatarImage" alt="Profile" class="user-avatar">
+                                            <span class="d-none d-md-block dropdown-toggle ps-2">@user.UserName</span>
+                                        </a>
+                                        <div class="dropdown-menu user-button" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item user-item" href="@Url.Action("Detail/" + user.UserID,"Users")"><i class="bi bi-person-fill"></i> Thông tin tài khoản</a>
+                                            <a class="dropdown-item user-item" href="@Url.Action("GetOrder/"+user.UserID,"Order")"> <i class="bi bi-receipt-cutoff"></i> Đơn hàng của bạn</a>
+                                            <a class="dropdown-item user-item" href="@Url.Action("FavoriteList/"+user.UserID,"FavoriteProduct")"><i class="bi bi-heart"></i>Sản phẩm yêu thích</a>
+                                            <a class="dropdown-item user-item" href="@Url.Action("Logout","Users")"><i class="bi bi-box-arrow-right"></i> Đăng xuất</a>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="nav-item dropdown pe-3">
+                                        @*<a href="@Url.Action("Login","Users")" class="user-login" id="login">
+                                                <i class="bi bi-person"></i>
+
+                                            </a>*@
+                                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="@Url.Action("Login","Users")" data-bs-toggle="dropdown">
+                                            <img src="~/Content/assets/img/profile-img.jpg" alt="Profile" class="user-avatar">
+                                            <span class="d-none d-md-block  ps-2">Khách hàng</span>
+                                        </a>
+
+                                    </div>
+                                }
+                            </li>
+
+
+                        </ul>
+
+
+                        <div class="hamburger_container">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    </nav>
+    </header>
+
+    <!--<div class="main_nav_container">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 ">
+                <nav class="logo_container" >
+                    <a href="@Url.Action("Index","Home")">HaLu<span>Store</span></a>
+
+                </nav>
+
+                <nav class="navbar" >
+
+                    <ul class="navbar_menu">
+
+
+                        <li class="col-lg-4 search-input text-right">
+
+                            @using (Html.BeginForm("Search", "Category", FormMethod.Post, new { @class = "form-inline" }))
+                            {
+                                <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm" name="searchString" aria-label="Search">
+                                <button class=" my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
+                            }
+
+                        </li>
+
+
+                        <li><a class="nav-link active" aria-current="page" href="@Url.Action("GetAllProduct","Category")"><i class=""></i>Sản Phẩm</a></li>-->
+    @*<li><a class="nav-link" href="@Url.Action("Index","News")"><i class=""></i>Tin tức</a></li>*@
+    <!--<li> <a class="nav-link" href="@Url.Action("Introduction","Home")"><i class=""></i>Giới thiệu</a></li>
+
+
+
+                            <li>
+                                @if (user != null)
+                                {
+                                    <div class="dropdown item user-loged">
+                                        <a data-toggle="dropdown">
+                                            <img src="~/image/@user.AvatarImage" class="user-avatar" />
+                                            <p>@user.UserName</p>
+                                        </a>
+                                        <div class="dropdown-menu user-button" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item user-item" href="@Url.Action("Detail/" + user.UserID,"Users")"><i class="bi bi-person-fill"></i> Thông tin tài khoản</a>
+                                            <a class="dropdown-item user-item" href="@Url.Action("GetOrder/"+user.UserID,"Order")"> <i class="bi bi-receipt-cutoff"></i> Đơn hàng của bạn</a>
+                                            <a class="dropdown-item user-item" href="@Url.Action("FavoriteList/"+user.UserID,"FavoriteProduct")"><i class="bi bi-heart"></i>Sản phẩm yêu thích</a>
+                                            <a class="dropdown-item user-item" href="@Url.Action("Logout","Users")"><i class="bi bi-box-arrow-right"></i> Đăng xuất</a>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="item user-not-loged-in" id="login">
+                                        <a href="@Url.Action("Login","Users")" class="user-login" id="login">
+                                            <i class="bi bi-person"></i>
+
+                                        </a>
+
+                                    </div>
+                                }
+                            </li>
+                            <li></li>
+
+                        </ul>
+
+
+                        <div class="hamburger_container">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    </nav>
+    </header>-->
+    <!-- end header section -->
+    <!-- slider section -->
+
+    <main style="padding-top: 70px">
+        <div style="min-height:530px">
+            @RenderBody()
+        </div>
+        <!-- contact section -->
+    </main>
+    <section class="contact_section ">
+        <div class="container px-0">
+            <div class="heading_container ">
+                <h2 class="">
+                    Địa chỉ và cách liên hệ
+                </h2>
+            </div>
+        </div>
+        <div class="container container-bg">
+            <div class="row">
+                <div class="col-lg-7 col-md-6 px-0">
+                    <div class="map_container">
+                        <div class="map-responsive">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.2901094786025!2d106.59804621143324!3d10.865525089244075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752b088de30f3b%3A0xd2140740d360f705!2sHo%20Chi%20Minh%20City%20University%20of%20Foreign%20Languages%20-%20Information%20Technology%20(HUFLIT)%20-%20Hoc%20Mon%20Campus!5e0!3m2!1sfr!2s!4v1699005058838!5m2!1sfr!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-5 px-0">
+                    <form action="#">
+                        <div>
+                            <input type="text" placeholder="Họ và tên" />
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Email" />
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Số điện thoại" />
+                        </div>
+                        <div>
+                            <input type="text" class="message-box" placeholder="Lời nhắn" />
+                        </div>
+                        <div class="d-flex ">
+                            <button>
+                                Liên Hệ
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end contact section -->
+    <!-- client section -->
+    <section class="client_section layout_padding">
+        <div class="container">
+            <div class="heading_container heading_center">
+                <h2>
+                    Thương hiệu hợp tác
+                </h2>
+            </div>
+        </div>
+        <div class="container px-0">
+            <div id="customCarousel2" class="carousel  carousel-fade" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="box">
+                            <div class="client_info">
+                                <div class="client_name">
+                                    <h5>
+                                        Anessa
+                                    </h5>
+                                    <h6>
+                                        Thương hiệu mỹ phẩm đến từ Nhật Bản
+                                    </h6>
+                                </div>
+                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                            </div>
+                            <p>
+                                Anessa là biểu tượng của sự hoàn hảo trong lĩnh vực làm đẹp, nổi tiếng với những sản phẩm chăm sóc da và chống nắng hàng đầu. Sự kết hợp độc đáo giữa công nghệ tiên tiến và thành phần tự nhiên không chỉ mang đến cho làn da của bạn sự bảo vệ toàn diện mà còn tạo nên những trải nghiệm làm đẹp tuyệt vời. Anessa không chỉ là một thương hiệu mỹ phẩm, mà là nguồn cảm hứng cho việc yêu quý và chăm sóc bản thân mỗi ngày.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="box">
+                            <div class="client_info">
+                                <div class="client_name">
+                                    <h5>
+                                        Bioderma
+                                    </h5>
+                                    <h6>
+                                        Thương hiệu mỹ phẩm đến từ Pháp
+                                    </h6>
+                                </div>
+                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                            </div>
+                            <p>
+                                Bioderma, nguồn cảm hứng từ vẻ đẹp tự nhiên của làn da, là hãng mỹ phẩm hàng đầu đến từ Pháp. Với sứ mệnh bảo vệ và tôn trọng làn da, Bioderma tập trung vào nghiên cứu và phát triển các sản phẩm chăm sóc da độc đáo, tạo ra những trải nghiệm làm đẹp không chỉ hiệu quả mà còn nhạy cảm đối với từng loại da. Được biết đến với các dòng sản phẩm như Sensibio và Hydrabio, Bioderma đã trở thành người bạn đồng hành tin cậy cho những người chú trọng đến sức khỏe và vẻ đẹp tự nhiên của làn da.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="box">
+                            <div class="client_info">
+                                <div class="client_name">
+                                    <h5>
+                                        L'Oréal
+                                    </h5>
+                                    <h6>
+                                        Thương hiệu mỹ phẩm đến từ Pháp
+                                    </h6>
+                                </div>
+                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                            </div>
+                            <p>
+                                L'Oréal, một biểu tượng trong ngành công nghiệp làm đẹp, là thương hiệu mỹ phẩm đẳng cấp đến từ Pháp. Với hơn một thế kỷ kinh nghiệm và tình yêu đam mê đối với sự đẹp, L'Oréal không chỉ mang đến những sản phẩm chăm sóc da, trang điểm và chăm sóc tóc hàng đầu, mà còn là nguồn động viên để mọi người thể hiện phong cách cá nhân và tự tin. Cam kết với sự sáng tạo và nghiên cứu tiên tiến, L'Oréal là đối tác tin cậy đồng hành với người tiêu dùng trên toàn thế giới.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel_btn-box">
+                    <a class="carousel-control-prev" href="#customCarousel2" role="button" data-slide="prev">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#customCarousel2" role="button" data-slide="next">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end client section -->
+    <!-- info section -->
+
+    <section class="info_section  layout_padding2-top">
+        <div class="social_container">
+            <div class="social_box">
+                <a href="">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                    <i class="fa fa-youtube" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+        <div class="info_container ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3">
+                        <h6>
+                            Về chúng tôi
+                        </h6>
+                        <p>
+                            Chào mừng bạn đến với DIOR, nơi bạn có thể khám phá và trải nghiệm sức hút của vẻ đẹp tự nhiên. Chúng tôi tự hào cung cấp những sản phẩm chăm sóc da và trang điểm chất lượng cao, giúp bạn tự tin bước vào mọi sự kiện.
+                        </p>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="info_form ">
+                            <h5>
+                                Newsletter
+                            </h5>
+                            <form action="#">
+                                <input type="email" placeholder="email">
+                                <button>
+                                    Liên hệ qua email
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <h6>
+                            Giúp đỡ
+                        </h6>
+                        <p>
+                            Nếu có điều gì thắc mắc vui lòng liên hệ với chúng tôi qua số điện thoại hoặc 2 email đã được đề cập.
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <h6>
+                            CONTACT US
+                        </h6>
+                        <div class="info_link-box">
+                            <a href="">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <span>  10 QL22, Tân Xuân, Hóc Môn, Thành phố Hồ Chí Minh </span>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <span>09989898998</span>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                <span> nhom10@gmail.com</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer section -->
+        <footer class=" footer_section">
+            <div class="container">
+                <p>
+                    &copy; <span id="displayYear"></span> MTKPM 
+                    <a href="#">Nhom 10</a>
+                </p>
+            </div>
+        </footer>
+        <!-- footer section -->
+
+    </section>
+
+    <!-- end info section -->
+
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="~/Scripts/jquery.slim.min.js"></script>
+    <script src="~/Scripts/poper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/owlcarousel/owl.carousel.min.js"></script>
+
+    <script src="~/Scripts/owlcarousel.custom.js"></script>
+    <script src="~/Scripts/jquery.custom.js"></script>
+
+    <script src="~/Scripts/main.js"></script>
+    <script>
+        // JavaScript code for theme switching
+        function toggleTheme() {
+            var themeLink = document.getElementById('theme');
+            var currentTheme = themeLink.getAttribute('href');
+            var newTheme = currentTheme.includes('light') ? 'dark' : 'light';
+            themeLink.setAttribute('href', '/Content/css/' + newTheme + '-theme.css');
+
+            // Lưu chế độ màu nền đã chọn vào cookie
+            document.cookie = "theme=" + newTheme + "; path=/";
+        }
+
+    </script>
+
+</body>
+
+</html>
